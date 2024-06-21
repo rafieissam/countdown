@@ -8,5 +8,8 @@
             {{ seconds }}
         </div>
     </div>
-    <div class="control-block" [ngClass]="isPaused ? 'play' : 'pause'"></div>
+    <div class="d-f">
+        <div class="control-block mr-8" (click)="toggleClick()" [ngClass]="isPaused ? 'play' : 'pause'"></div>
+        <div class="control-block delete" (click)="onDelete()"></div>
+    </div>
 </div>

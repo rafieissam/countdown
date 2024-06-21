@@ -4,11 +4,15 @@
         <span class="sort-option active">Asc</span>
         <span class="sort-option">Desc</span>
     </div>
-    <div class="control-block"></div>
+    <div class="control-block add" (click)="onTimerAdd()"></div>
 </div>
 
 <div class="timers-wrapper">
-    <app-timer></app-timer>
-    <app-timer></app-timer>
-    <app-timer></app-timer>
+    @for (timer of timers; track timer.id) {
+        <app-timer [seconds]="timer.seconds" [isPaused]="timer.isPaused" (toggle)="onTimerToggle(timer.id, $event)" (delete)="onTimerDelete(timer.id)"></app-timer>
+    } @empty {
+        <div class="empty-timer-list">
+            No timers found!
+        </div>
+    }
 </div>
