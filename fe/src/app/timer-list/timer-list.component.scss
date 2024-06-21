@@ -1,0 +1,33 @@
+:host {
+    max-width: 500px;
+    width: 100%;
+}
+
+.control-bar {
+    padding: 0 12px;
+}
+
+.sorter {
+    font-size: 24px;
+    & > span {
+        margin: 0 3px;
+        &:first {
+            margin-left: 0;
+        }
+    }
+}
+
+.sort-option {
+    text-transform: uppercase;
+    color: var(--secondary-purple);
+    font-weight: bold;
+    cursor: pointer;
+    opacity: 0.4;
+    &.active {
+        opacity: 1;
+    }
+}
+
+.timers-wrapper {
+    padding: 8px 0;
+}
