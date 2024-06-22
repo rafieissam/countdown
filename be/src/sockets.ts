@@ -1,30 +1,28 @@
 import { Server, Socket } from 'socket.io';
-import { Timer } from './timer';
+import { GlobalTimers } from './timer';
 
-let globalTimers: Timer[] = [];
-
-const runGlobalTimer = (io: Server) => {
+export const runGlobalTimer = (io: Server) => {
     setInterval(() => {
-        globalTimers.forEach(t => {
+        GlobalTimers.get().forEach(t => {
             if (!t.isPaused && t.seconds > 0) t.seconds--;
+            console.log('dec')
         });
         syncAllClients(io);
     }, 1000);
 };
 
-const onSyncServer = (io: Server, timersStr: string) => {
-    const timers: Timer[] = JSON.parse(timersStr);
-    globalTimers = timers;
+export const onSyncServer = (io: Server, timersStr: string) => {
+    GlobalTimers.setFromStr(timersStr);
     syncAllClients(io);
 };
 
-const syncClient = (socket: Socket) => {
-    const timersStr = JSON.stringify(globalTimers);
+export const syncClient = (socket: Socket) => {
+    const timersStr = GlobalTimers.getToStr();
     socket.emit('sync_client', timersStr);
 }
 
-const syncAllClients = (io: Server) => {
-    const timersStr = JSON.stringify(globalTimers);
+export const syncAllClients = (io: Server) => {
+    const timersStr = GlobalTimers.getToStr();
     io.sockets.fetchSockets().then(sockets => {
         sockets.forEach(socket => {
             socket.emit('sync_client', timersStr);
