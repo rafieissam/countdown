@@ -27,7 +27,7 @@ export class TimerService {
    * Generate a random amount of seconds equivalent to minutes in the range 10-20
    */
   randomSeconds(): number {
-    return Math.floor(Math.random() * 20 * 60) + 10 * 60;
+    return Math.floor(Math.random() * 10 * 60 + 1) + 10 * 60;
   }
 
   createTimer(seconds = this.randomSeconds()) {
