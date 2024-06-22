@@ -7,7 +7,7 @@ const app = express();
 const httpServer = createServer(app);
 const io = new Server(httpServer, {
     cors: {
-        origin: "http://localhost:4200",
+        origin: ["http://localhost:4200", "https://db7cgvxs2naqk.cloudfront.net"],
         methods: ["GET", "POST"]
     }
 });
