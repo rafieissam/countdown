@@ -6,7 +6,7 @@ let globalTimers: Timer[] = [];
 const runGlobalTimer = (io: Server) => {
     setInterval(() => {
         globalTimers.forEach(t => {
-            if (!t.isPaused) t.seconds--;
+            if (!t.isPaused && t.seconds > 0) t.seconds--;
         });
         syncAllClients(io);
     }, 1000);
