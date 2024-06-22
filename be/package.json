@@ -4,7 +4,9 @@
   "main": "index.js",
   "scripts": {
     "watch": "nodemon",
-    "start": "ts-node server.ts",
+    "build": "tsc",
+    "start": "node dist/server.js",
+    "deploy": "git push dokku be:main",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -14,12 +16,12 @@
   "devDependencies": {
     "@types/express": "^4.17.21",
     "@types/node": "^20.14.7",
+    "@types/socket.io": "^3.0.2",
     "nodemon": "^3.1.4",
     "ts-node": "^10.9.2",
     "typescript": "^5.5.2"
   },
   "dependencies": {
-    "@types/socket.io": "^3.0.2",
     "express": "^4.19.2",
     "socket.io": "^4.7.5"
   }
