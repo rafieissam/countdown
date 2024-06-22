@@ -23,7 +23,7 @@ export class TimerListComponent implements OnInit {
   sortedTimers: Timer[] = [];
   sortDir: 'asc' | 'desc' = 'desc';
 
-  constructor (private timerService: TimerService) { }
+  constructor (public timerService: TimerService) { }
   
   ngOnInit(): void {
     this.subscribeToTimers();

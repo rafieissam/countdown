@@ -11,7 +11,7 @@ export class TimerService {
   timers: Timer[] = [];
   timersSubject: BehaviorSubject<Timer[]> = new BehaviorSubject<Timer[]>([]);
 
-  constructor(private socketService: SocketService) {
+  constructor(public socketService: SocketService) {
     this.listenSockets();
   }
 
