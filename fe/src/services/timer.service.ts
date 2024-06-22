@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { SocketService } from './socket.service';
-import { Timer } from './timer';
+import { Timer } from '../interfaces/timer';
 import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
@@ -11,7 +11,9 @@ export class TimerService {
   timers: Timer[] = [];
   timersSubject: BehaviorSubject<Timer[]> = new BehaviorSubject<Timer[]>([]);
 
-  constructor(private socketService: SocketService) { }
+  constructor(private socketService: SocketService) {
+    this.listenSockets();
+  }
 
   getTimers() {
     return this.timersSubject.asObservable();

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TimerComponent } from '../timer/timer.component';
-import { TimerService } from '../timer.service';
-import { Timer } from '../timer';
+import { TimerService } from '../../services/timer.service';
+import { Timer } from '../../interfaces/timer';
 import { CommonModule } from '@angular/common';
 
 @Component({

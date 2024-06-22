@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { TimerListComponent } from './timer-list/timer-list.component';
+import { TimerListComponent } from '../components/timer-list/timer-list.component';
 
 @Component({
   selector: 'app-root',
