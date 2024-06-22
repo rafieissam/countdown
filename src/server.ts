@@ -4,6 +4,11 @@ import { Server } from 'socket.io';
 import { registerSockets } from './sockets';
 
 const app = express();
+
+app.get('/', (req, res) => {
+    res.send("Welcome to the Socket API for Countdown App");
+});
+
 const httpServer = createServer(app);
 const io = new Server(httpServer, {
     cors: {
